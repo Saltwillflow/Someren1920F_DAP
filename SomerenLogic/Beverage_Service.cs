@@ -51,4 +51,3 @@ namespace SomerenLogic
         }
     }
 }
-//ya mom
