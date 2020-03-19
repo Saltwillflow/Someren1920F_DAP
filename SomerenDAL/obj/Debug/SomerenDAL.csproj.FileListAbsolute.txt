@@ -72,3 +72,13 @@ C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenDAL\obj
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenDAL\obj\Debug\SomerenDAL.csproj.CopyComplete
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenDAL\obj\Debug\SomerenDAL.dll
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenDAL\obj\Debug\SomerenDAL.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\bin\Debug\SomerenDAL.dll.config
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\bin\Debug\SomerenDAL.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\bin\Debug\SomerenDAL.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\bin\Debug\SomerenModel.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\bin\Debug\SomerenModel.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\obj\Debug\SomerenDAL.csprojAssemblyReference.cache
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\obj\Debug\SomerenDAL.csproj.CoreCompileInputs.cache
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\obj\Debug\SomerenDAL.csproj.CopyComplete
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\obj\Debug\SomerenDAL.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenDAL\obj\Debug\SomerenDAL.pdb

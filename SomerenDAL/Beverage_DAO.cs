@@ -15,7 +15,7 @@ namespace SomerenDAL
     {
         public List<Beverage> Db_Get_All_Beverages()
         {
-            string query = "SELECT beverage_id, beverage_name, price, alcoholic, total_sold, revenue, total_tax, stock FROM [Beverages]";
+            string query = "SELECT * FROM [Beverages]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -35,11 +35,11 @@ namespace SomerenDAL
                     TotalSold = (int)(dr["total_sold"]),
                     Revenue = (Decimal)(dr["revenue"]),
                     TotalTax = (Decimal)(dr["total_tax"]),
-                    Stock = (int)(dr["Stock"])
+                    Stock = (int)(dr["stock"])
                 };
                 beverages.Add(beverage);
             }
             return beverages;
         }
     }
-}
+} //blablala

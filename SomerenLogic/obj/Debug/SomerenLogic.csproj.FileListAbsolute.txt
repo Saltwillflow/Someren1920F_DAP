@@ -88,3 +88,15 @@ C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenLogic\o
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenLogic\obj\Debug\SomerenLogic.csproj.CopyComplete
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenLogic\obj\Debug\SomerenLogic.dll
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_19-3-2020\SomerenLogic\obj\Debug\SomerenLogic.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenLogic.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenLogic.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenDAL.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenModel.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenDAL.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenDAL.dll.config
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\bin\Debug\SomerenModel.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\obj\Debug\SomerenLogic.csprojAssemblyReference.cache
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\obj\Debug\SomerenLogic.csproj.CoreCompileInputs.cache
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\obj\Debug\SomerenLogic.csproj.CopyComplete
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\obj\Debug\SomerenLogic.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenLogic\obj\Debug\SomerenLogic.pdb

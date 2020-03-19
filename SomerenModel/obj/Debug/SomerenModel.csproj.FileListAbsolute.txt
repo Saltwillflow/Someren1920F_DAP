@@ -32,3 +32,9 @@ C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_12-3-2020\SomerenModel\o
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_12-3-2020\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_12-3-2020\SomerenModel\obj\Debug\SomerenModel.dll
 C:\Users\Patrick\Desktop\Inholland_Project\Someren1920F_12-3-2020\SomerenModel\obj\Debug\SomerenModel.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenModel\bin\Debug\SomerenModel.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenModel\bin\Debug\SomerenModel.pdb
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenModel\obj\Debug\SomerenModel.csprojAssemblyReference.cache
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenModel\obj\Debug\SomerenModel.dll
+C:\Users\Swagtron\Desktop\Someren1920F_DAP\SomerenModel\obj\Debug\SomerenModel.pdb
