@@ -26,16 +26,40 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
+                int totalSoldNullCheck = 0;
+                if (!dr.IsNull("total_sold"))
+                {
+                    totalSoldNullCheck = (int)(dr["total_sold"]);
+                }
+
+                int stockNullCheck = 0;
+                if (!dr.IsNull("total_sold"))
+                {
+                    stockNullCheck = (int)(dr["stock"]);
+                }
+
+                Decimal revenueNullCheck = 0;
+                if (!dr.IsNull("revenue"))
+                {
+                    revenueNullCheck = (Decimal)(dr["revenue"]);
+                }
+
+                Decimal totalTaxNullCheck = 0;
+                if (!dr.IsNull("total_tax"))
+                {
+                    totalTaxNullCheck = (Decimal)(dr["total_tax"]);
+                }
+
                 Beverage beverage = new Beverage()
                 {
                     Id = (int)(dr["beverage_id"]),
                     Name = (String)(dr["beverage_name"].ToString()),
                     Price = (Decimal)(dr["price"]),
                     Alcoholic = (bool)(dr["alcoholic"]),
-                    TotalSold = (int)(dr["total_sold"]),
-                    Revenue = (Decimal)(dr["revenue"]),
-                    TotalTax = (Decimal)(dr["total_tax"]),
-                    Stock = (int)(dr["stock"])
+                    TotalSold = totalSoldNullCheck,
+                    Revenue = revenueNullCheck,
+                    TotalTax = totalTaxNullCheck,
+                    Stock = stockNullCheck
                 };
                 beverages.Add(beverage);
             }
