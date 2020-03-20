@@ -16,10 +16,9 @@ namespace SomerenDAL
         //Query update voor table Beverages
         public void Db_Update_Beverages(Beverage b)
         {
-            string query = "UPDATE Beverages SET stock = stock -1, total_sold = total_sold +1, revenue =@Revenue WHERE beverage_id =@Id";
+            string query = "UPDATE Beverages SET stock = stock -1, total_sold = total_sold +1 WHERE beverage_id =@Id; UPDATE beverages SET revenue = price * total_sold WHERE beverage_id =@Id";
             SqlParameter[] sqlParameters =
             {
-                new SqlParameter("Revenue" , b.Revenue),
                 new SqlParameter("Id", b.Id)
             };
             //Uitvoering van de query
