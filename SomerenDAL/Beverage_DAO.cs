@@ -22,10 +22,10 @@ namespace SomerenDAL
 
         public int DB_Get_Total_Sold(int Id)
         {
-            string query = "SELECT COUNT(*) AS [total sold] FROM BeverageOrders AS BO JOIN Beverages AS B ON BO.beverage_id = " + Id;
+            string query = "SELECT COUNT(*) FROM BeverageOrders AS BO WHERE BO.beverage_id = " + Id;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             List<Beverage> order = ReadTables(ExecuteSelectQuery(query, sqlParameters));
-            return 0;
+            return order.Count();
         }
 
         private List<Beverage> ReadTables(DataTable dataTable)
@@ -52,7 +52,6 @@ namespace SomerenDAL
                     Name = (String)(dr["beverage_name"].ToString()),
                     Price = (Decimal)(dr["price"]),
                     Alcoholic = (bool)(dr["alcoholic"]),
-                    TotalSold = totalSoldNullCheck,
                     Stock = stockNullCheck
                 };
                 beverages.Add(beverage);

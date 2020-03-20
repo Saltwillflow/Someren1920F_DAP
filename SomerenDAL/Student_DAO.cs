@@ -20,6 +20,14 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public int DB_Get_Total_Customers(int Id)
+        {
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            List<Student> students = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return students.Count();
+        }
+
         private List<Student> ReadTables(DataTable dataTable)
         {
             List<Student> students = new List<Student>();

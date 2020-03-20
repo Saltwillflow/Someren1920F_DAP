@@ -156,19 +156,19 @@ namespace SomerenUI
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -224,7 +224,7 @@ namespace SomerenUI
             // 
             this.pnl_Dashboard.Controls.Add(this.lbl_Dashboard);
             this.pnl_Dashboard.Controls.Add(this.img_Dashboard);
-            this.pnl_Dashboard.Location = new System.Drawing.Point(0, 21);
+            this.pnl_Dashboard.Location = new System.Drawing.Point(3, 18);
             this.pnl_Dashboard.Name = "pnl_Dashboard";
             this.pnl_Dashboard.Size = new System.Drawing.Size(938, 466);
             this.pnl_Dashboard.TabIndex = 2;
@@ -255,7 +255,7 @@ namespace SomerenUI
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(817, 227);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(111, 37);
             this.btnRegister.TabIndex = 7;
@@ -579,7 +579,7 @@ namespace SomerenUI
             this.pnl_Revenue.Controls.Add(this.listViewRevenue);
             this.pnl_Revenue.Controls.Add(this.pictureBox5);
             this.pnl_Revenue.Controls.Add(this.label2);
-            this.pnl_Revenue.Location = new System.Drawing.Point(6, 21);
+            this.pnl_Revenue.Location = new System.Drawing.Point(0, 21);
             this.pnl_Revenue.Name = "pnl_Revenue";
             this.pnl_Revenue.Size = new System.Drawing.Size(938, 466);
             this.pnl_Revenue.TabIndex = 9;
@@ -648,6 +648,7 @@ namespace SomerenUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.pnl_Revenue);
             this.Controls.Add(this.pnl_Dashboard);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pnl_Register);
@@ -655,7 +656,6 @@ namespace SomerenUI
             this.Controls.Add(this.pnl_Lecturers);
             this.Controls.Add(this.pnl_Beverage);
             this.Controls.Add(this.pnl_Room);
-            this.Controls.Add(this.pnl_Revenue);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";

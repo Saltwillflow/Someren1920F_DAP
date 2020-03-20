@@ -43,7 +43,6 @@ namespace SomerenLogic
                 beverage.Add(a);
                 return beverage;
             }
-
         }
     }
 }

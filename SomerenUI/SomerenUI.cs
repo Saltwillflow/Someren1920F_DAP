@@ -232,9 +232,9 @@ namespace SomerenUI
                 listViewBeverages.Columns.Add("Name");
                 listViewBeverages.Columns.Add("Price");
                 listViewBeverages.Columns.Add("Alcoholic");
-                listViewBeverages.Columns.Add("Total Sold");
-                listViewBeverages.Columns.Add("Revenue");
-                listViewBeverages.Columns.Add("Total Tax");
+                //listViewBeverages.Columns.Add("Total Sold");
+                //listViewBeverages.Columns.Add("Revenue");
+                //listViewBeverages.Columns.Add("Total Tax");
                 listViewBeverages.Columns.Add("Stock");
 
                 foreach (SomerenModel.Beverage s in beverageList)
@@ -253,9 +253,9 @@ namespace SomerenUI
                         li.SubItems.Add("Non Alcoholic Beverage");
                     }
 
-                    li.SubItems.Add(s.TotalSold.ToString());
-                    li.SubItems.Add(s.Revenue.ToString());
-                    li.SubItems.Add(s.TotalTax.ToString());
+                    //li.SubItems.Add(s.TotalSold.ToString());
+                    //li.SubItems.Add(s.Revenue.ToString());
+                    //li.SubItems.Add(s.TotalTax.ToString());
                     li.SubItems.Add(s.Stock.ToString());
                     listViewBeverages.Items.Add(li);
                 }
@@ -275,14 +275,31 @@ namespace SomerenUI
                 pnl_Revenue.Show();
 
                 // clear the listview before filling it again
-
+                SomerenLogic.Beverage_Service bevService = new SomerenLogic.Beverage_Service();
+                List<Beverage> beverageList = bevService.GetBeverages();
                 listViewRevenue.View = View.Details;
                 listViewRevenue.Clear();
 
+                listViewRevenue.Columns.Add("Beverage ID");
+                listViewRevenue.Columns.Add("Name");
+                listViewRevenue.Columns.Add("Total Sold");
+                listViewRevenue.Columns.Add("Revenue");
+                listViewRevenue.Columns.Add("Total Tax");
+
+                foreach (SomerenModel.Beverage s in beverageList)
+                {
+
+                    ListViewItem li = new ListViewItem(s.Id.ToString());
+                    li.SubItems.Add(s.Name);
+
+                    li.SubItems.Add(s.TotalSold.ToString());
+                    li.SubItems.Add(s.Revenue.ToString());
+                    li.SubItems.Add(s.TotalTax.ToString());
+                    listViewRevenue.Items.Add(li);
+                }
+
                 monthCalendarStartDate.Show();
                 monthCalendarEndDate.Show();
-
-                listViewRevenue.Columns.Add("1");
             }
 
             else if (panelName == "Register")
