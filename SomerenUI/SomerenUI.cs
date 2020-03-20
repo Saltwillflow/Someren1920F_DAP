@@ -433,7 +433,7 @@ namespace SomerenUI
         {
             showPanel("Revenue");
         }
-        private void RegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Register");
         }
