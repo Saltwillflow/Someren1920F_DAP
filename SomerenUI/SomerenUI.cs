@@ -36,6 +36,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Register.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -49,6 +50,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Register.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -98,6 +100,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Register.Hide();
 
                 pnl_Lecturers.Show();
                // pnl_Lecturers.BringToFront();
@@ -159,6 +162,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
                 pnl_Beverage.Hide();
+                pnl_Register.Hide();
 
                 // show rooms
                 pnl_Room.Show();
@@ -205,6 +209,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
                 pnl_Rooms.Hide();
+                pnl_Register.Hide();
 
                 // show rooms
                 pnl_Beverage.Show();
@@ -248,6 +253,62 @@ namespace SomerenUI
                     li.SubItems.Add(s.TotalTax.ToString());
                     li.SubItems.Add(s.Stock.ToString());
                     listViewBeverages.Items.Add(li);
+                }
+
+            }
+
+            else if (panelName == "Register")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Lecturers.Hide();
+                pnl_Students.Hide();
+                pnl_Rooms.Show();
+                pnl_Beverage.Hide();
+
+                // show rooms
+                pnl_Register.Show();
+
+                listViewRegisterB.View = View.Details;
+                listViewRegisterB.Clear();
+                listViewRegisterB.Columns.Add("Beverage ID");
+                listViewRegisterB.Columns.Add("Name");
+                listViewRegisterB.Columns.Add("Price");
+                listViewRegisterB.Columns.Add("Stock");
+
+                SomerenLogic.Beverage_Service becService = new SomerenLogic.Beverage_Service();
+                List<Beverage> beverageList = becService.GetBeverages();
+
+                foreach (SomerenModel.Beverage b in beverageList)
+                {
+                    ListViewItem li = new ListViewItem(b.Id.ToString());
+                    li.Tag = b;
+                    li.SubItems.Add(b.Name);
+                    li.SubItems.Add(b.Price.ToString());
+                    li.SubItems.Add(b.Stock.ToString());
+                    listViewRegisterB.Items.Add(li);
+
+                }
+
+                listViewRegister.View = View.Details;
+
+                // clear the listview before filling it again
+                listViewRegister.Clear();
+
+                listViewRegister.Columns.Add("Id");
+                listViewRegister.Columns.Add("Student name");
+
+                SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
+                List<Student> studentList = studService.GetStudents();
+
+
+                foreach (SomerenModel.Student s in studentList)
+                {
+                    ListViewItem li = new ListViewItem(s.Number.ToString());
+                    li.Tag = s;
+                    li.SubItems.Add(s.Name);
+                    listViewRegister.Items.Add(li);
                 }
 
             }
@@ -330,6 +391,38 @@ namespace SomerenUI
             SomerenUpdate f2 = new SomerenUpdate();
             f2.ShowDialog();
             showPanel("Beverages");
+        }
+
+        private void RegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Register");
+        }
+
+        private void BtnRegister_Click(object sender, EventArgs e)
+        {
+            double prijs = 0;
+            int i = 0;
+            if (listViewRegisterB.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            
+
+            //Gaat elk geselecteerde Item langs 
+            foreach (object dranken in listViewRegisterB.SelectedItems)
+            {
+                SomerenModel.Beverage b = (SomerenModel.Beverage)listViewRegisterB.SelectedItems[i].Tag;
+                SomerenModel.Student s = (SomerenModel.Student)listViewRegister.SelectedItems[0].Tag;
+                prijs += (double)b.Price;
+                i = +1;
+                SomerenDAL.Register_DAO registerDaoS = new SomerenDAL.Register_DAO();
+                SomerenDAL.Register_DAO registerDaob = new SomerenDAL.Register_DAO();
+                registerDaob.Db_Update_Beverages(b);
+                registerDaoS.Db_Update_Beverages_Orders(s, b);
+            }
+            //Berekent totaal prijs
+            MessageBox.Show($"Total cost: {prijs.ToString("0.00")}");
+
         }
     }
 }
