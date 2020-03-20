@@ -11,7 +11,7 @@ using SomerenModel;
 
 namespace SomerenDAL
 {
-   public class Beverage_DAO : Base
+    public class Beverage_DAO : Base
     {
         public List<Beverage> Db_Get_All_Beverages()
         {
