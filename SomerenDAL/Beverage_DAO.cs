@@ -20,6 +20,14 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public int DB_Get_Total_Sold(int Id)
+        {
+            string query = "SELECT COUNT(*) AS [total sold] FROM BeverageOrders AS BO JOIN Beverages AS B ON BO.beverage_id = " + Id;
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            List<Beverage> order = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return 0;
+        }
+
         private List<Beverage> ReadTables(DataTable dataTable)
         {
             List<Beverage> beverages = new List<Beverage>();
@@ -38,18 +46,6 @@ namespace SomerenDAL
                     stockNullCheck = (int)(dr["stock"]);
                 }
 
-                Decimal revenueNullCheck = 0;
-                if (!dr.IsNull("revenue"))
-                {
-                    revenueNullCheck = (Decimal)(dr["revenue"]);
-                }
-
-                Decimal totalTaxNullCheck = 0;
-                if (!dr.IsNull("total_tax"))
-                {
-                    totalTaxNullCheck = (Decimal)(dr["total_tax"]);
-                }
-
                 Beverage beverage = new Beverage()
                 {
                     Id = (int)(dr["beverage_id"]),
@@ -57,8 +53,6 @@ namespace SomerenDAL
                     Price = (Decimal)(dr["price"]),
                     Alcoholic = (bool)(dr["alcoholic"]),
                     TotalSold = totalSoldNullCheck,
-                    Revenue = revenueNullCheck,
-                    TotalTax = totalTaxNullCheck,
                     Stock = stockNullCheck
                 };
                 beverages.Add(beverage);

@@ -36,6 +36,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Revenue.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -49,6 +50,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Revenue.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -98,6 +100,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Revenue.Hide();
 
                 pnl_Lecturers.Show();
                // pnl_Lecturers.BringToFront();
@@ -159,6 +162,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
                 pnl_Beverage.Hide();
+                pnl_Revenue.Hide();
 
                 // show rooms
                 pnl_Room.Show();
@@ -205,6 +209,7 @@ namespace SomerenUI
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
                 pnl_Rooms.Hide();
+                pnl_Revenue.Hide();
 
                 // show rooms
                 pnl_Beverage.Show();
@@ -251,6 +256,29 @@ namespace SomerenUI
                 }
 
             }
+            else if (panelName == "Revenue")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Lecturers.Hide();
+                pnl_Students.Hide();
+                pnl_Room.Hide();
+                pnl_Beverage.Hide();
+
+                //show Revenue
+                pnl_Revenue.Show();
+
+                // clear the listview before filling it again
+
+                listViewRevenue.View = View.Details;
+                listViewRevenue.Clear();
+
+                monthCalendarStartDate.Show();
+                monthCalendarEndDate.Show();
+
+                listViewRevenue.Columns.Add("1");
+            }
 
         }
 
@@ -283,14 +311,12 @@ namespace SomerenUI
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             showPanel("Students");
         }
 
         private void LecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Lecturers");
-           
         }
 
 
@@ -326,10 +352,29 @@ namespace SomerenUI
 
         private void btn_UpdateDatabase_Click(object sender, EventArgs e)
         {
-            
             SomerenUpdate f2 = new SomerenUpdate();
             f2.ShowDialog();
             showPanel("Beverages");
+        }
+
+        private void pnl_Beverage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl_Revenue_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Revenue");
+        }
+
+        private void listViewRevenue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

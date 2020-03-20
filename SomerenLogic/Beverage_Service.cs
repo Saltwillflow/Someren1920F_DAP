@@ -29,8 +29,6 @@ namespace SomerenLogic
                 a.Name = "Test Drank 1";
                 a.Price = 4.99M;
                 a.TotalSold = 42;
-                a.Revenue = 1000;
-                a.TotalTax = 100.99M;
                 a.Stock = 100;
                 beverage.Add(a);
                 Beverage b = new Beverage();
@@ -38,8 +36,6 @@ namespace SomerenLogic
                 a.Name = "Test Drank 2";
                 a.Price = 5.99M;
                 a.TotalSold = 13;
-                a.Revenue = 2000;
-                a.TotalTax = 222.99M;
                 a.Stock = 200;
 
                 //throw new Exception("Someren couldn't connect to the database");

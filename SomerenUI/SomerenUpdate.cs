@@ -54,22 +54,22 @@ namespace SomerenUI
             _con = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
             _con.Open();
             _cmd = new SqlCommand("UPDATE Beverages SET beverage_name=@a2 , price=@a3 , stock=@a4 , alcoholic=@a5 , total_sold=@a6 , revenue=@a7 , total_tax=@a8 WHERE beverage_id=@a1",_con);
-            _cmd.Parameters.Add("a1", txt_Id.Text);
-            _cmd.Parameters.Add("a2",txt_Name.Text);
-            _cmd.Parameters.Add("a3", txt_Price.Text);
-            _cmd.Parameters.Add("a4", txt_Stock.Text);
+            _cmd.Parameters.AddWithValue("a1", txt_Id.Text);
+            _cmd.Parameters.AddWithValue("a2",txt_Name.Text);
+            _cmd.Parameters.AddWithValue("a3", txt_Price.Text);
+            _cmd.Parameters.AddWithValue("a4", txt_Stock.Text);
             if (rdb_AlcoholicTrue.Checked)
             {
-                _cmd.Parameters.Add("a5", true);
+                _cmd.Parameters.AddWithValue("a5", true);
             }
 
             else //(rdb_AlcoholicFalse.Checked)
             {
-                _cmd.Parameters.Add("a5", false);
+                _cmd.Parameters.AddWithValue("a5", false);
             }
-            _cmd.Parameters.Add("a6", txt_TotalSold.Text);
-            _cmd.Parameters.Add("a7", txt_Revenue.Text);
-            _cmd.Parameters.Add("a8", txt_TotalTax.Text);
+            _cmd.Parameters.AddWithValue("a6", txt_TotalSold.Text);
+            _cmd.Parameters.AddWithValue("a7", txt_Revenue.Text);
+            _cmd.Parameters.AddWithValue("a8", txt_TotalTax.Text);
             _cmd.ExecuteNonQuery();
 
             this.Hide();

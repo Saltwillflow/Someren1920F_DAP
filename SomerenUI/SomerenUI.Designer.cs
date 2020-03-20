@@ -67,13 +67,23 @@ namespace SomerenUI
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pnl_Rooms = new System.Windows.Forms.Label();
             this.pnl_Beverage = new System.Windows.Forms.Panel();
+            this.btn_UpdateDatabase = new System.Windows.Forms.Button();
             this.listViewBeverages = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnl_Beverages = new System.Windows.Forms.Label();
-            this.btn_UpdateDatabase = new System.Windows.Forms.Button();
+            this.pnl_Revenue = new System.Windows.Forms.Panel();
+            this.monthCalendarEndDate = new System.Windows.Forms.MonthCalendar();
+            this.monthCalendarStartDate = new System.Windows.Forms.MonthCalendar();
+            this.listViewRevenue = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
@@ -85,6 +95,8 @@ namespace SomerenUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_Beverage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnl_Revenue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // img_Dashboard
@@ -105,7 +117,8 @@ namespace SomerenUI
             this.lecturersToolStripMenuItem,
             this.activitiesToolStripMenuItem,
             this.roomsToolStripMenuItem,
-            this.beveragesToolStripMenuItem});
+            this.beveragesToolStripMenuItem,
+            this.revenueToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -181,7 +194,7 @@ namespace SomerenUI
             // 
             this.pnl_Dashboard.Controls.Add(this.lbl_Dashboard);
             this.pnl_Dashboard.Controls.Add(this.img_Dashboard);
-            this.pnl_Dashboard.Location = new System.Drawing.Point(12, 27);
+            this.pnl_Dashboard.Location = new System.Drawing.Point(3, 28);
             this.pnl_Dashboard.Name = "pnl_Dashboard";
             this.pnl_Dashboard.Size = new System.Drawing.Size(938, 466);
             this.pnl_Dashboard.TabIndex = 2;
@@ -201,7 +214,7 @@ namespace SomerenUI
             this.pnl_Students.Controls.Add(this.listViewStudents);
             this.pnl_Students.Controls.Add(this.pictureBox1);
             this.pnl_Students.Controls.Add(this.lbl_Students);
-            this.pnl_Students.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Students.Location = new System.Drawing.Point(0, 27);
             this.pnl_Students.Name = "pnl_Students";
             this.pnl_Students.Size = new System.Drawing.Size(938, 466);
             this.pnl_Students.TabIndex = 4;
@@ -257,7 +270,7 @@ namespace SomerenUI
             this.pnl_Lecturers.Controls.Add(this.listViewTeachers);
             this.pnl_Lecturers.Controls.Add(this.pictureBox2);
             this.pnl_Lecturers.Controls.Add(this.lbl_Teachers);
-            this.pnl_Lecturers.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Lecturers.Location = new System.Drawing.Point(3, 27);
             this.pnl_Lecturers.Name = "pnl_Lecturers";
             this.pnl_Lecturers.Size = new System.Drawing.Size(938, 466);
             this.pnl_Lecturers.TabIndex = 6;
@@ -313,7 +326,7 @@ namespace SomerenUI
             this.pnl_Room.Controls.Add(this.listViewRooms);
             this.pnl_Room.Controls.Add(this.pictureBox3);
             this.pnl_Room.Controls.Add(this.pnl_Rooms);
-            this.pnl_Room.Location = new System.Drawing.Point(12, 24);
+            this.pnl_Room.Location = new System.Drawing.Point(0, 27);
             this.pnl_Room.Name = "pnl_Room";
             this.pnl_Room.Size = new System.Drawing.Size(938, 466);
             this.pnl_Room.TabIndex = 7;
@@ -372,10 +385,21 @@ namespace SomerenUI
             this.pnl_Beverage.Controls.Add(this.listViewBeverages);
             this.pnl_Beverage.Controls.Add(this.pictureBox4);
             this.pnl_Beverage.Controls.Add(this.pnl_Beverages);
-            this.pnl_Beverage.Location = new System.Drawing.Point(9, 24);
+            this.pnl_Beverage.Location = new System.Drawing.Point(3, 24);
             this.pnl_Beverage.Name = "pnl_Beverage";
             this.pnl_Beverage.Size = new System.Drawing.Size(938, 466);
             this.pnl_Beverage.TabIndex = 8;
+            this.pnl_Beverage.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Beverage_Paint);
+            // 
+            // btn_UpdateDatabase
+            // 
+            this.btn_UpdateDatabase.Location = new System.Drawing.Point(311, 389);
+            this.btn_UpdateDatabase.Name = "btn_UpdateDatabase";
+            this.btn_UpdateDatabase.Size = new System.Drawing.Size(293, 38);
+            this.btn_UpdateDatabase.TabIndex = 6;
+            this.btn_UpdateDatabase.Text = "Update Database";
+            this.btn_UpdateDatabase.UseVisualStyleBackColor = true;
+            this.btn_UpdateDatabase.Click += new System.EventHandler(this.btn_UpdateDatabase_Click);
             // 
             // listViewBeverages
             // 
@@ -422,27 +446,97 @@ namespace SomerenUI
             this.pnl_Beverages.TabIndex = 3;
             this.pnl_Beverages.Text = "Beverages";
             // 
-            // btn_UpdateDatabase
+            // pnl_Revenue
             // 
-            this.btn_UpdateDatabase.Location = new System.Drawing.Point(311, 389);
-            this.btn_UpdateDatabase.Name = "btn_UpdateDatabase";
-            this.btn_UpdateDatabase.Size = new System.Drawing.Size(293, 38);
-            this.btn_UpdateDatabase.TabIndex = 6;
-            this.btn_UpdateDatabase.Text = "Update Database";
-            this.btn_UpdateDatabase.UseVisualStyleBackColor = true;
-            this.btn_UpdateDatabase.Click += new System.EventHandler(this.btn_UpdateDatabase_Click);
+            this.pnl_Revenue.AccessibleName = "";
+            this.pnl_Revenue.Controls.Add(this.monthCalendarEndDate);
+            this.pnl_Revenue.Controls.Add(this.monthCalendarStartDate);
+            this.pnl_Revenue.Controls.Add(this.listViewRevenue);
+            this.pnl_Revenue.Controls.Add(this.pictureBox5);
+            this.pnl_Revenue.Controls.Add(this.label2);
+            this.pnl_Revenue.Location = new System.Drawing.Point(3, 24);
+            this.pnl_Revenue.Name = "pnl_Revenue";
+            this.pnl_Revenue.Size = new System.Drawing.Size(938, 466);
+            this.pnl_Revenue.TabIndex = 9;
+            this.pnl_Revenue.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Revenue_Paint);
+            // 
+            // monthCalendarEndDate
+            // 
+            this.monthCalendarEndDate.Location = new System.Drawing.Point(595, 111);
+            this.monthCalendarEndDate.Name = "monthCalendarEndDate";
+            this.monthCalendarEndDate.TabIndex = 7;
+            // 
+            // monthCalendarStartDate
+            // 
+            this.monthCalendarStartDate.Location = new System.Drawing.Point(406, 111);
+            this.monthCalendarStartDate.Name = "monthCalendarStartDate";
+            this.monthCalendarStartDate.TabIndex = 6;
+            // 
+            // listViewRevenue
+            // 
+            this.listViewRevenue.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12});
+            this.listViewRevenue.HideSelection = false;
+            this.listViewRevenue.Location = new System.Drawing.Point(16, 42);
+            this.listViewRevenue.Name = "listViewRevenue";
+            this.listViewRevenue.Size = new System.Drawing.Size(766, 307);
+            this.listViewRevenue.TabIndex = 5;
+            this.listViewRevenue.UseCompatibleStateImageBehavior = false;
+            this.listViewRevenue.SelectedIndexChanged += new System.EventHandler(this.listViewRevenue_SelectedIndexChanged);
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "ID";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Name";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Date of Birth";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
+            this.pictureBox5.Location = new System.Drawing.Point(805, 0);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(130, 123);
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 29);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Revenue";
+            // 
+            // revenueToolStripMenuItem
+            // 
+            this.revenueToolStripMenuItem.Name = "revenueToolStripMenuItem";
+            this.revenueToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.revenueToolStripMenuItem.Text = "Revenue";
+            this.revenueToolStripMenuItem.Click += new System.EventHandler(this.revenueToolStripMenuItem_Click);
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 505);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnl_Dashboard);
+            this.Controls.Add(this.pnl_Students);
+            this.Controls.Add(this.pnl_Lecturers);
             this.Controls.Add(this.pnl_Beverage);
             this.Controls.Add(this.pnl_Room);
-            this.Controls.Add(this.pnl_Lecturers);
-            this.Controls.Add(this.pnl_Students);
-            this.Controls.Add(this.pnl_Dashboard);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnl_Revenue);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SomerenUI";
@@ -466,6 +560,9 @@ namespace SomerenUI
             this.pnl_Beverage.ResumeLayout(false);
             this.pnl_Beverage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnl_Revenue.ResumeLayout(false);
+            this.pnl_Revenue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,6 +617,16 @@ namespace SomerenUI
         private PictureBox pictureBox4;
         private Label pnl_Beverages;
         private Button btn_UpdateDatabase;
+        private Panel pnl_Revenue;
+        private MonthCalendar monthCalendarEndDate;
+        private MonthCalendar monthCalendarStartDate;
+        private ListView listViewRevenue;
+        private ColumnHeader columnHeader10;
+        private ColumnHeader columnHeader11;
+        private ColumnHeader columnHeader12;
+        private PictureBox pictureBox5;
+        private Label label2;
+        private ToolStripMenuItem revenueToolStripMenuItem;
     }
 }
 
