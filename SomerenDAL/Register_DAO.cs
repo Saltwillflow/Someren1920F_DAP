@@ -38,5 +38,6 @@ namespace SomerenDAL
             //Uitvoering van de query
             ExecuteEditQuery(query, sqlParameters);
         }
+
     }
 }

@@ -28,7 +28,7 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-            if(panelName == "Dashboard")
+            if (panelName == "Dashboard")
             {
 
                 // hide all other panels
@@ -38,12 +38,13 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
+                pnl_Guidance.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
                 img_Dashboard.Show();
             }
-            else if(panelName == "Students")
+            else if (panelName == "Students")
             {
                 // hide all other panels
                 pnl_Dashboard.Hide();
@@ -53,17 +54,18 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
+                pnl_Guidance.Hide();
 
                 // show students
                 pnl_Students.Show();
                 pnl_Students.BringToFront();
-                
 
-                
+
+
 
                 // fill the students listview within the students panel with a list of students
 
-                
+
                 SomerenLogic.Student_Service studService = new SomerenLogic.Student_Service();
                 List<Student> studentList = studService.GetStudents();
 
@@ -91,12 +93,12 @@ namespace SomerenUI
                     li.SubItems.Add(s.BirthDate.ToString("dd/MM/yyyy"));
                     listViewStudents.Items.Add(li);
                 }
-                
-                
+
+
             }
             else if (panelName == "Lecturers")
             {
-                
+
                 pnl_Dashboard.Hide();
                 img_Dashboard.Hide();
                 pnl_Students.Hide();
@@ -104,11 +106,12 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
+                pnl_Guidance.Hide();
 
                 pnl_Lecturers.Show();
-               // pnl_Lecturers.BringToFront();
-                
-                        
+                // pnl_Lecturers.BringToFront();
+
+
                 SomerenLogic.Teacher_Service teachService = new SomerenLogic.Teacher_Service();
                 List<Teacher> teacherList = teachService.GetTeachers();
 
@@ -130,7 +133,7 @@ namespace SomerenUI
                 {
 
                     ListViewItem li = new ListViewItem(t.Number.ToString());
-                    
+
                     //De naam splitsen naar voor naam en achter naam
                     var names = t.Name.Split(' ');
                     string firstName = names[0];
@@ -152,7 +155,7 @@ namespace SomerenUI
                         li.SubItems.Add("No");
                     }
 
-                   
+
                     listViewTeachers.Items.Add(li);
                 }
             }
@@ -167,6 +170,7 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
+                pnl_Guidance.Hide();
 
                 // show rooms
                 pnl_Room.Show();
@@ -215,10 +219,11 @@ namespace SomerenUI
                 pnl_Rooms.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
+                pnl_Guidance.Hide();
 
                 // show rooms
                 pnl_Beverage.Show();
-                
+
 
                 // fill the rooms listview within the rooms panel with a list of rooms
                 SomerenLogic.Beverage_Service bevService = new SomerenLogic.Beverage_Service();
@@ -270,6 +275,7 @@ namespace SomerenUI
                 pnl_Students.Hide();
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
+                pnl_Guidance.Hide();
 
                 //show Revenue
                 pnl_Revenue.Show();
@@ -312,6 +318,7 @@ namespace SomerenUI
                 pnl_Rooms.Hide();
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
+                pnl_Guidance.Hide();
 
                 // show register
                 pnl_Register.Show();
@@ -356,6 +363,41 @@ namespace SomerenUI
                     li.SubItems.Add(s.Name);
                     listViewRegister.Items.Add(li);
                 }
+
+            }
+
+            else if (panelName == "Guidance")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Lecturers.Hide();
+                pnl_Students.Hide();
+                pnl_Rooms.Hide();
+                pnl_Beverage.Hide();
+                pnl_Revenue.Hide();
+                pnl_Register.Hide();
+
+                pnl_Guidance.Show();               
+
+                listViewGuidance.View = View.Details;
+                listViewGuidance.Clear();
+                listViewGuidance.Columns.Add("Guidance ID");
+                listViewGuidance.Columns.Add("Activity");
+                listViewGuidance.Columns.Add("Teacher ID");
+
+                SomerenLogic.Guidance_Service guiService = new SomerenLogic.Guidance_Service();
+                List<Guidance> guidanceList = guiService.GetGuidances();
+
+                foreach (SomerenModel.Guidance g in guidanceList)
+                {
+                    ListViewItem li = new ListViewItem(g.GuidanceId.ToString());
+                    li.Tag = g;
+                    li.SubItems.Add(g.Activity);
+                    li.SubItems.Add(g.TeacherId.ToString());
+                    listViewGuidance.Items.Add(li);
+                }
+
 
             }
 
@@ -473,7 +515,7 @@ namespace SomerenUI
             {
                 return;
             }
-            ;
+            
 
             //Gaat elk geselecteerde Item langs 
             foreach (object dranken in listViewRegisterB.SelectedItems)
@@ -489,6 +531,54 @@ namespace SomerenUI
             }
             //Berekent totaal prijs
             MessageBox.Show($"Total cost: {prijs.ToString("0.00")}");
+        }
+
+        private void GuidanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Guidance");
+        }
+
+        private void BtnGuidanceDelete_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            if (listViewGuidance.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the selected guidance?" , MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.No)
+            {
+                return
+            }
+
+            foreach (object guidance in listViewGuidance.SelectedItems)
+            {
+                SomerenModel.Guidance g = (SomerenModel.Guidance)listViewGuidance.SelectedItems[i].Tag;                
+                i = +1;
+                SomerenDAL.Guidance_DAO guidanceDelete = new SomerenDAL.Guidance_DAO();
+                guidanceDelete.Db_Delete_Guidance(g);
+            }
+
+            showPanel("Guidance");
+
+        }
+
+        private void BtnGuidanceAdd_Click(object sender, EventArgs e)
+        {
+            if(txtActivity.Text == null || txtGuidanceId.Text == null || txtTeacherId == null)
+            {
+                MessageBox.Show("All boxes have to be filled in");
+                return;
+            }
+            int guidanceId = Int32.Parse(txtGuidanceId.Text);
+            int teacherId = Int32.Parse(txtTeacherId.Text);
+            SomerenDAL.Guidance_DAO guidanceAdd = new SomerenDAL.Guidance_DAO();
+            SomerenModel.Guidance g = new SomerenModel.Guidance();
+            g.GuidanceId = guidanceId;
+            g.Activity = txtActivity.Text;
+            g.TeacherId = teacherId;
+            guidanceAdd.Db_Add_Guidance(g);
+            showPanel("Guidance");
         }
     }
 }
