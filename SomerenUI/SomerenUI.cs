@@ -545,10 +545,10 @@ namespace SomerenUI
             {
                 return;
             }
-            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the selected guidance?" , MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the selected guidance?", " " , MessageBoxButtons.YesNo);
             if(dialogResult == DialogResult.No)
             {
-                return
+                return;
             }
 
             foreach (object guidance in listViewGuidance.SelectedItems)
