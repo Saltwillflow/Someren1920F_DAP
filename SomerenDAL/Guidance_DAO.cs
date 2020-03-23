@@ -16,7 +16,15 @@ namespace SomerenDAL
         
         public List<Guidance> Db_Get_All_Guidances()
         {
-            string query = "SELECT guidance_id, activity, teacher_id FROM Guidance";
+            string query = "SELECT Guidance.teacher_id,Teachers.teacher_name FROM Guidance INNER JOIN Teachers ON Guidance.teacher_id = Teachers.teacher_id";
+            //string query = "SELECT teacher_id from GUIDANCE";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<Guidance> DB_GET_ALL_NOT_Guidance()
+        {
+            string query = "SELECT T.teacher_id, T.teacher_name FROM Teachers T WHERE NOT EXISTS(select null from Guidance G where g.teacher_id = t.teacher_id)";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -31,8 +39,8 @@ namespace SomerenDAL
 
                 Guidance guidance = new Guidance()
                 {
-                    GuidanceId = (int)dr["guidance_id"],
-                    Activity = (String)dr["activity"],
+                   
+                    TeacherName = (String)dr["teacher_name"].ToString(),
                     TeacherId = (int)(dr["teacher_id"])
                 };
                 guidances.Add(guidance);
@@ -44,10 +52,10 @@ namespace SomerenDAL
         public void Db_Delete_Guidance(Guidance g)
         {
             //Query Delete guidance voor table Guidance
-            string query = "DELETE FROM Guidance WHERE guidance_id = @GuidanceId";
+            string query = "DELETE FROM Guidance WHERE teacher_id = @GuidanceId";
             SqlParameter[] sqlParameters =
             {
-                 new SqlParameter("GuidanceId" , g.GuidanceId),                 
+                 new SqlParameter("GuidanceId" , g.TeacherId),                 
             };
             //Uitvoering van de query
             ExecuteEditQuery(query, sqlParameters);
@@ -55,11 +63,9 @@ namespace SomerenDAL
 
         public void Db_Add_Guidance(Guidance g)
         {
-            string query = "INSERT INTO Guidance(guidance_id, activity, teacher_id) VALUES (@GuidanceId, @Activity, @TeacherId)";
+            string query = "INSERT INTO Guidance(teacher_id) VALUES (@TeacherId)";
             SqlParameter[] sqlParameters =
             {
-                 new SqlParameter("GuidanceId" , g.GuidanceId),
-                 new SqlParameter("Activity" , g.Activity),
                  new SqlParameter("TeacherId" , g.TeacherId),
             };
             //Uitvoering van de query

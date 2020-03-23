@@ -382,22 +382,60 @@ namespace SomerenUI
 
                 listViewGuidance.View = View.Details;
                 listViewGuidance.Clear();
-                listViewGuidance.Columns.Add("Guidance ID");
-                listViewGuidance.Columns.Add("Activity");
+                
                 listViewGuidance.Columns.Add("Teacher ID");
+                listViewGuidance.Columns.Add("First name");
+                listViewGuidance.Columns.Add("Last name");
 
                 SomerenLogic.Guidance_Service guiService = new SomerenLogic.Guidance_Service();
                 List<Guidance> guidanceList = guiService.GetGuidances();
 
                 foreach (SomerenModel.Guidance g in guidanceList)
                 {
-                    ListViewItem li = new ListViewItem(g.GuidanceId.ToString());
+                    var names = g.TeacherName.Split(' ');
+                    string firstName = names[0];
+                    string lastName = "";
+                    if (names.Count() > 0 && names[1] != null)
+                    {
+                        lastName = names[1];
+                    }
+
+                    ListViewItem li = new ListViewItem(g.TeacherId.ToString());
                     li.Tag = g;
-                    li.SubItems.Add(g.Activity);
-                    li.SubItems.Add(g.TeacherId.ToString());
+                    li.SubItems.Add(g.TeacherName);
+                    li.SubItems.Add(firstName);
+                    li.SubItems.Add(lastName);
                     listViewGuidance.Items.Add(li);
                 }
 
+                listViewTeachersToGuidance.View = View.Details;
+                listViewTeachersToGuidance.Clear();
+
+                listViewTeachersToGuidance.Columns.Add("Teacher ID");
+                listViewTeachersToGuidance.Columns.Add("First name");
+                listViewTeachersToGuidance.Columns.Add("Last name");
+
+                SomerenLogic.Guidance_Service teachService = new SomerenLogic.Guidance_Service();
+                List<Guidance> teacherList = teachService.GetNotGuidance();
+
+                foreach (SomerenModel.Guidance g in teacherList)
+                {
+                    var names = g.TeacherName.Split(' ');
+                    string firstName = names[0];
+                    string lastName = "";
+                    if (names.Count() > 0 && names[1] != null)
+                    {
+                        lastName = names[1];
+                    }
+
+
+                    ListViewItem li = new ListViewItem(g.TeacherId.ToString());
+                    li.Tag = g;
+                    li.SubItems.Add(g.TeacherName);
+                    li.SubItems.Add(firstName);
+                    li.SubItems.Add(lastName);
+                    listViewTeachersToGuidance.Items.Add(li);
+                }
 
             }
 
@@ -553,8 +591,8 @@ namespace SomerenUI
 
             foreach (object guidance in listViewGuidance.SelectedItems)
             {
-                SomerenModel.Guidance g = (SomerenModel.Guidance)listViewGuidance.SelectedItems[i].Tag;                
-                i = +1;
+                SomerenModel.Guidance g = (SomerenModel.Guidance)listViewGuidance.SelectedItems[i].Tag;
+                i++;
                 SomerenDAL.Guidance_DAO guidanceDelete = new SomerenDAL.Guidance_DAO();
                 guidanceDelete.Db_Delete_Guidance(g);
             }
@@ -565,20 +603,21 @@ namespace SomerenUI
 
         private void BtnGuidanceAdd_Click(object sender, EventArgs e)
         {
-            if(txtActivity.Text == null || txtGuidanceId.Text == null || txtTeacherId == null)
+            int i = 0;
+            if (listViewTeachersToGuidance.SelectedItems.Count == 0)
             {
-                MessageBox.Show("All boxes have to be filled in");
                 return;
             }
-            int guidanceId = Int32.Parse(txtGuidanceId.Text);
-            int teacherId = Int32.Parse(txtTeacherId.Text);
-            SomerenDAL.Guidance_DAO guidanceAdd = new SomerenDAL.Guidance_DAO();
-            SomerenModel.Guidance g = new SomerenModel.Guidance();
-            g.GuidanceId = guidanceId;
-            g.Activity = txtActivity.Text;
-            g.TeacherId = teacherId;
-            guidanceAdd.Db_Add_Guidance(g);
+            foreach (object guidance in listViewTeachersToGuidance.SelectedItems)
+            {
+                SomerenModel.Guidance g = (SomerenModel.Guidance)listViewTeachersToGuidance.SelectedItems[i].Tag;
+                i++;
+                SomerenDAL.Guidance_DAO guidanceAdd = new SomerenDAL.Guidance_DAO();
+                guidanceAdd.Db_Add_Guidance(g);
+            }
+
             showPanel("Guidance");
         }
+
     }
 }

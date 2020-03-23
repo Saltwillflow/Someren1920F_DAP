@@ -21,9 +21,7 @@ namespace SomerenDAL
             {
                 Console.WriteLine(e.Message);
             }
-            
-            
-             
+
         }
 
         protected SqlConnection OpenConnection()
