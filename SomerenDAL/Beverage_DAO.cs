@@ -52,6 +52,7 @@ namespace SomerenDAL
                     Name = (String)(dr["beverage_name"].ToString()),
                     Price = (Decimal)(dr["price"]),
                     Alcoholic = (bool)(dr["alcoholic"]),
+                    TotalSold = (int)(dr["total_sold"]),
                     Stock = stockNullCheck
                 };
                 beverages.Add(beverage);
