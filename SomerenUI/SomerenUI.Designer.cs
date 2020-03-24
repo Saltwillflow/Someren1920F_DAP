@@ -46,6 +46,8 @@ namespace SomerenUI
             this.revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guidanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemGuidanceAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemGuidanceDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_Dashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnl_Revenue = new System.Windows.Forms.Panel();
@@ -58,16 +60,21 @@ namespace SomerenUI
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnl_Guidance = new System.Windows.Forms.Panel();
-            this.listViewTeachersToGuidance = new System.Windows.Forms.ListView();
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnGuidanceDelete = new System.Windows.Forms.Button();
-            this.btnGuidanceAdd = new System.Windows.Forms.Button();
+            this.pnlGuidanceDelete = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.listViewGuidance = new System.Windows.Forms.ListView();
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BtnGuidanceDelete = new System.Windows.Forms.Button();
+            this.pnlGuidanceAdd = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listViewTeachersToGuidance = new System.Windows.Forms.ListView();
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnGuidanceAdd = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnl_Register = new System.Windows.Forms.Panel();
@@ -111,12 +118,16 @@ namespace SomerenUI
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnl_Beverages = new System.Windows.Forms.Label();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.fileSystemWatcher2 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.img_Dashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnl_Dashboard.SuspendLayout();
             this.pnl_Revenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnl_Guidance.SuspendLayout();
+            this.pnlGuidanceDelete.SuspendLayout();
+            this.pnlGuidanceAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.pnl_Register.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -128,6 +139,8 @@ namespace SomerenUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_Beverage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).BeginInit();
             this.SuspendLayout();
             // 
             // img_Dashboard
@@ -156,7 +169,7 @@ namespace SomerenUI
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1283, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1283, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -167,7 +180,7 @@ namespace SomerenUI
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 26);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -193,57 +206,74 @@ namespace SomerenUI
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.LecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
             this.activitiesToolStripMenuItem.Text = "Activities";
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.RoomsToolStripMenuItem_Click);
             // 
             // beveragesToolStripMenuItem
             // 
             this.beveragesToolStripMenuItem.Name = "beveragesToolStripMenuItem";
-            this.beveragesToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.beveragesToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
             this.beveragesToolStripMenuItem.Text = "Beverages";
             this.beveragesToolStripMenuItem.Click += new System.EventHandler(this.BeveragesToolStripMenuItem_Click);
             // 
             // revenueToolStripMenuItem
             // 
             this.revenueToolStripMenuItem.Name = "revenueToolStripMenuItem";
-            this.revenueToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.revenueToolStripMenuItem.Size = new System.Drawing.Size(79, 26);
             this.revenueToolStripMenuItem.Text = "Revenue";
             this.revenueToolStripMenuItem.Click += new System.EventHandler(this.revenueToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(77, 26);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // guidanceToolStripMenuItem
             // 
+            this.guidanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemGuidanceAdd,
+            this.MenuItemGuidanceDelete});
             this.guidanceToolStripMenuItem.Name = "guidanceToolStripMenuItem";
-            this.guidanceToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.guidanceToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
             this.guidanceToolStripMenuItem.Text = "Guidance";
             this.guidanceToolStripMenuItem.Click += new System.EventHandler(this.GuidanceToolStripMenuItem_Click);
+            // 
+            // MenuItemGuidanceAdd
+            // 
+            this.MenuItemGuidanceAdd.Name = "MenuItemGuidanceAdd";
+            this.MenuItemGuidanceAdd.Size = new System.Drawing.Size(224, 26);
+            this.MenuItemGuidanceAdd.Text = "Add";
+            this.MenuItemGuidanceAdd.Click += new System.EventHandler(this.MenuItemGuidanceAdd_Click);
+            // 
+            // MenuItemGuidanceDelete
+            // 
+            this.MenuItemGuidanceDelete.Name = "MenuItemGuidanceDelete";
+            this.MenuItemGuidanceDelete.Size = new System.Drawing.Size(224, 26);
+            this.MenuItemGuidanceDelete.Text = "Delete";
+            this.MenuItemGuidanceDelete.Click += new System.EventHandler(this.MenuItemGuidanceDelete_Click);
             // 
             // pnl_Dashboard
             // 
@@ -264,7 +294,6 @@ namespace SomerenUI
             this.lbl_Dashboard.Size = new System.Drawing.Size(243, 17);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
-            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnl_Revenue
             // 
@@ -279,7 +308,6 @@ namespace SomerenUI
             this.pnl_Revenue.Name = "pnl_Revenue";
             this.pnl_Revenue.Size = new System.Drawing.Size(1251, 532);
             this.pnl_Revenue.TabIndex = 9;
-            this.pnl_Revenue.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Revenue_Paint);
             // 
             // monthCalendarEndDate
             // 
@@ -308,7 +336,6 @@ namespace SomerenUI
             this.listViewRevenue.Size = new System.Drawing.Size(1020, 377);
             this.listViewRevenue.TabIndex = 5;
             this.listViewRevenue.UseCompatibleStateImageBehavior = false;
-            this.listViewRevenue.SelectedIndexChanged += new System.EventHandler(this.listViewRevenue_SelectedIndexChanged);
             // 
             // columnHeader10
             // 
@@ -347,65 +374,36 @@ namespace SomerenUI
             // pnl_Guidance
             // 
             this.pnl_Guidance.AccessibleName = "";
-            this.pnl_Guidance.Controls.Add(this.listViewTeachersToGuidance);
-            this.pnl_Guidance.Controls.Add(this.btnGuidanceDelete);
-            this.pnl_Guidance.Controls.Add(this.btnGuidanceAdd);
-            this.pnl_Guidance.Controls.Add(this.listViewGuidance);
+            this.pnl_Guidance.Controls.Add(this.pnlGuidanceAdd);
+            this.pnl_Guidance.Controls.Add(this.pnlGuidanceDelete);
             this.pnl_Guidance.Controls.Add(this.pictureBox9);
             this.pnl_Guidance.Controls.Add(this.label4);
             this.pnl_Guidance.Location = new System.Drawing.Point(0, 46);
             this.pnl_Guidance.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_Guidance.Name = "pnl_Guidance";
-            this.pnl_Guidance.Size = new System.Drawing.Size(1245, 536);
+            this.pnl_Guidance.Size = new System.Drawing.Size(1245, 490);
             this.pnl_Guidance.TabIndex = 10;
             // 
-            // listViewTeachersToGuidance
+            // pnlGuidanceDelete
             // 
-            this.listViewTeachersToGuidance.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader19,
-            this.columnHeader20,
-            this.columnHeader21});
-            this.listViewTeachersToGuidance.HideSelection = false;
-            this.listViewTeachersToGuidance.Location = new System.Drawing.Point(643, 79);
-            this.listViewTeachersToGuidance.Margin = new System.Windows.Forms.Padding(4);
-            this.listViewTeachersToGuidance.Name = "listViewTeachersToGuidance";
-            this.listViewTeachersToGuidance.Size = new System.Drawing.Size(398, 354);
-            this.listViewTeachersToGuidance.TabIndex = 9;
-            this.listViewTeachersToGuidance.UseCompatibleStateImageBehavior = false;
+            this.pnlGuidanceDelete.Controls.Add(this.label5);
+            this.pnlGuidanceDelete.Controls.Add(this.listViewGuidance);
+            this.pnlGuidanceDelete.Controls.Add(this.BtnGuidanceDelete);
+            this.pnlGuidanceDelete.Location = new System.Drawing.Point(0, 0);
+            this.pnlGuidanceDelete.Name = "pnlGuidanceDelete";
+            this.pnlGuidanceDelete.Size = new System.Drawing.Size(1056, 561);
+            this.pnlGuidanceDelete.TabIndex = 11;
+            this.pnlGuidanceDelete.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGuidanceDelete_Paint);
             // 
-            // columnHeader19
+            // label5
             // 
-            this.columnHeader19.Text = "ID";
-            // 
-            // columnHeader20
-            // 
-            this.columnHeader20.Text = "Name";
-            // 
-            // columnHeader21
-            // 
-            this.columnHeader21.Text = "Date of Birth";
-            // 
-            // btnGuidanceDelete
-            // 
-            this.btnGuidanceDelete.Location = new System.Drawing.Point(84, 466);
-            this.btnGuidanceDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGuidanceDelete.Name = "btnGuidanceDelete";
-            this.btnGuidanceDelete.Size = new System.Drawing.Size(148, 46);
-            this.btnGuidanceDelete.TabIndex = 8;
-            this.btnGuidanceDelete.Text = "Delete Guidance";
-            this.btnGuidanceDelete.UseVisualStyleBackColor = true;
-            this.btnGuidanceDelete.Click += new System.EventHandler(this.BtnGuidanceDelete_Click);
-            // 
-            // btnGuidanceAdd
-            // 
-            this.btnGuidanceAdd.Location = new System.Drawing.Point(711, 466);
-            this.btnGuidanceAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGuidanceAdd.Name = "btnGuidanceAdd";
-            this.btnGuidanceAdd.Size = new System.Drawing.Size(148, 46);
-            this.btnGuidanceAdd.TabIndex = 7;
-            this.btnGuidanceAdd.Text = "Add Guidance";
-            this.btnGuidanceAdd.UseVisualStyleBackColor = true;
-            this.btnGuidanceAdd.Click += new System.EventHandler(this.BtnGuidanceAdd_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(46, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(222, 32);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Delete guidance";
             // 
             // listViewGuidance
             // 
@@ -420,6 +418,7 @@ namespace SomerenUI
             this.listViewGuidance.Size = new System.Drawing.Size(353, 354);
             this.listViewGuidance.TabIndex = 6;
             this.listViewGuidance.UseCompatibleStateImageBehavior = false;
+            this.listViewGuidance.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListViewGuidance_ColumnClick);
             // 
             // columnHeader22
             // 
@@ -432,6 +431,86 @@ namespace SomerenUI
             // columnHeader24
             // 
             this.columnHeader24.Text = "Date of Birth";
+            // 
+            // BtnGuidanceDelete
+            // 
+            this.BtnGuidanceDelete.Location = new System.Drawing.Point(466, 374);
+            this.BtnGuidanceDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnGuidanceDelete.Name = "BtnGuidanceDelete";
+            this.BtnGuidanceDelete.Size = new System.Drawing.Size(155, 59);
+            this.BtnGuidanceDelete.TabIndex = 9;
+            this.BtnGuidanceDelete.Text = "Delete Guidance";
+            this.BtnGuidanceDelete.UseVisualStyleBackColor = true;
+            this.BtnGuidanceDelete.Click += new System.EventHandler(this.BtnGuidanceDelete_Click_1);
+            // 
+            // pnlGuidanceAdd
+            // 
+            this.pnlGuidanceAdd.Controls.Add(this.label3);
+            this.pnlGuidanceAdd.Controls.Add(this.label1);
+            this.pnlGuidanceAdd.Controls.Add(this.listViewTeachersToGuidance);
+            this.pnlGuidanceAdd.Controls.Add(this.btnGuidanceAdd);
+            this.pnlGuidanceAdd.Location = new System.Drawing.Point(0, 0);
+            this.pnlGuidanceAdd.Name = "pnlGuidanceAdd";
+            this.pnlGuidanceAdd.Size = new System.Drawing.Size(1067, 581);
+            this.pnlGuidanceAdd.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(472, 169);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(325, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Select one or multiple lecturers to add to guidance";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(46, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 36);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Add guidance";
+            // 
+            // listViewTeachersToGuidance
+            // 
+            this.listViewTeachersToGuidance.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader19,
+            this.columnHeader20,
+            this.columnHeader21});
+            this.listViewTeachersToGuidance.HideSelection = false;
+            this.listViewTeachersToGuidance.Location = new System.Drawing.Point(29, 75);
+            this.listViewTeachersToGuidance.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewTeachersToGuidance.Name = "listViewTeachersToGuidance";
+            this.listViewTeachersToGuidance.Size = new System.Drawing.Size(398, 354);
+            this.listViewTeachersToGuidance.TabIndex = 9;
+            this.listViewTeachersToGuidance.UseCompatibleStateImageBehavior = false;
+            this.listViewTeachersToGuidance.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ListViewTeachersToGuidance_ColumnClick);
+            this.listViewTeachersToGuidance.SelectedIndexChanged += new System.EventHandler(this.ListViewTeachersToGuidance_SelectedIndexChanged);
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "ID";
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Name";
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Date of Birth";
+            // 
+            // btnGuidanceAdd
+            // 
+            this.btnGuidanceAdd.Location = new System.Drawing.Point(509, 371);
+            this.btnGuidanceAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuidanceAdd.Name = "btnGuidanceAdd";
+            this.btnGuidanceAdd.Size = new System.Drawing.Size(227, 58);
+            this.btnGuidanceAdd.TabIndex = 7;
+            this.btnGuidanceAdd.Text = "Add Guidance";
+            this.btnGuidanceAdd.UseVisualStyleBackColor = true;
+            this.btnGuidanceAdd.Click += new System.EventHandler(this.BtnGuidanceAdd_Click);
             // 
             // pictureBox9
             // 
@@ -563,7 +642,7 @@ namespace SomerenUI
             this.pnl_Students.Location = new System.Drawing.Point(0, 52);
             this.pnl_Students.Margin = new System.Windows.Forms.Padding(4);
             this.pnl_Students.Name = "pnl_Students";
-            this.pnl_Students.Size = new System.Drawing.Size(1251, 544);
+            this.pnl_Students.Size = new System.Drawing.Size(1251, 563);
             this.pnl_Students.TabIndex = 4;
             // 
             // listViewStudents
@@ -685,7 +764,6 @@ namespace SomerenUI
             this.pnl_Room.Name = "pnl_Room";
             this.pnl_Room.Size = new System.Drawing.Size(1251, 552);
             this.pnl_Room.TabIndex = 7;
-            this.pnl_Room.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl_Room_Paint);
             // 
             // listViewRooms
             // 
@@ -734,7 +812,6 @@ namespace SomerenUI
             this.pnl_Rooms.Size = new System.Drawing.Size(108, 33);
             this.pnl_Rooms.TabIndex = 3;
             this.pnl_Rooms.Text = "Rooms";
-            this.pnl_Rooms.Click += new System.EventHandler(this.Label1_Click_1);
             // 
             // pnl_Beverage
             // 
@@ -748,7 +825,6 @@ namespace SomerenUI
             this.pnl_Beverage.Name = "pnl_Beverage";
             this.pnl_Beverage.Size = new System.Drawing.Size(1251, 551);
             this.pnl_Beverage.TabIndex = 8;
-            this.pnl_Beverage.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Beverage_Paint);
             // 
             // btn_UpdateDatabase
             // 
@@ -809,6 +885,16 @@ namespace SomerenUI
             this.pnl_Beverages.TabIndex = 3;
             this.pnl_Beverages.Text = "Beverages";
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // fileSystemWatcher2
+            // 
+            this.fileSystemWatcher2.EnableRaisingEvents = true;
+            this.fileSystemWatcher2.SynchronizingObject = this;
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -840,6 +926,10 @@ namespace SomerenUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnl_Guidance.ResumeLayout(false);
             this.pnl_Guidance.PerformLayout();
+            this.pnlGuidanceDelete.ResumeLayout(false);
+            this.pnlGuidanceDelete.PerformLayout();
+            this.pnlGuidanceAdd.ResumeLayout(false);
+            this.pnlGuidanceAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.pnl_Register.ResumeLayout(false);
             this.pnl_Register.PerformLayout();
@@ -856,6 +946,8 @@ namespace SomerenUI
             this.pnl_Beverage.ResumeLayout(false);
             this.pnl_Beverage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -935,7 +1027,6 @@ namespace SomerenUI
         private Label pnl_Registers;
         private ToolStripMenuItem guidanceToolStripMenuItem;
         private Panel pnl_Guidance;
-        private Button btnGuidanceDelete;
         private Button btnGuidanceAdd;
         private ListView listViewGuidance;
         private ColumnHeader columnHeader22;
@@ -947,6 +1038,16 @@ namespace SomerenUI
         private ColumnHeader columnHeader19;
         private ColumnHeader columnHeader20;
         private ColumnHeader columnHeader21;
+        private ToolStripMenuItem MenuItemGuidanceAdd;
+        private ToolStripMenuItem MenuItemGuidanceDelete;
+        private Panel pnlGuidanceAdd;
+        private Label label3;
+        private Label label1;
+        private Panel pnlGuidanceDelete;
+        private Label label5;
+        private Button BtnGuidanceDelete;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.IO.FileSystemWatcher fileSystemWatcher2;
     }
 }
 

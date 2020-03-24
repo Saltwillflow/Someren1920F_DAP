@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
+
 namespace SomerenUI
 {
     public partial class SomerenUI : Form
@@ -377,8 +379,10 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
-
-                pnl_Guidance.Show();               
+                
+                pnl_Guidance.Show();
+                pnlGuidanceAdd.Hide();
+                pnlGuidanceDelete.Show();
 
                 listViewGuidance.View = View.Details;
                 listViewGuidance.Clear();
@@ -458,10 +462,6 @@ namespace SomerenUI
             showPanel("Dashboard");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void img_Dashboard_Click(object sender, EventArgs e)
         {
@@ -479,36 +479,18 @@ namespace SomerenUI
         }
 
 
-        private void Label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void RoomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Rooms");
         }
 
-        private void Pnl_Room_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void BeveragesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Beverages");
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void btn_UpdateDatabase_Click(object sender, EventArgs e)
         {
             SomerenUpdate f2 = new SomerenUpdate();
@@ -516,15 +498,6 @@ namespace SomerenUI
             showPanel("Beverages");
         }
 
-        private void pnl_Beverage_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnl_Revenue_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -533,16 +506,6 @@ namespace SomerenUI
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Register");
-        }
-
-        private void listViewRevenue_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnRegister_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void BtnRegister_Click_1(object sender, EventArgs e)
@@ -576,31 +539,6 @@ namespace SomerenUI
             showPanel("Guidance");
         }
 
-        private void BtnGuidanceDelete_Click(object sender, EventArgs e)
-        {
-            int i = 0;
-            if (listViewGuidance.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the selected guidance?", " " , MessageBoxButtons.YesNo);
-            if(dialogResult == DialogResult.No)
-            {
-                return;
-            }
-
-            foreach (object guidance in listViewGuidance.SelectedItems)
-            {
-                SomerenModel.Guidance g = (SomerenModel.Guidance)listViewGuidance.SelectedItems[i].Tag;
-                i++;
-                SomerenDAL.Guidance_DAO guidanceDelete = new SomerenDAL.Guidance_DAO();
-                guidanceDelete.Db_Delete_Guidance(g);
-            }
-
-            showPanel("Guidance");
-
-        }
-
         private void BtnGuidanceAdd_Click(object sender, EventArgs e)
         {
             int i = 0;
@@ -615,9 +553,85 @@ namespace SomerenUI
                 SomerenDAL.Guidance_DAO guidanceAdd = new SomerenDAL.Guidance_DAO();
                 guidanceAdd.Db_Add_Guidance(g);
             }
-
+            
             showPanel("Guidance");
+            pnlGuidanceDelete.Hide();
+            pnlGuidanceAdd.Show();
+            
         }
 
+        private void ListViewGuidance_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if(listViewGuidance.Sorting == SortOrder.Descending)
+            {
+                listViewGuidance.Sorting = SortOrder.Ascending;
+            }
+
+            else
+            {
+                listViewGuidance.Sorting = SortOrder.Descending;
+            }
+
+        }
+
+        private void ListViewTeachersToGuidance_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (listViewTeachersToGuidance.Sorting == SortOrder.Descending)
+            {
+                listViewTeachersToGuidance.Sorting = SortOrder.Ascending;
+            }
+
+            else
+            {
+                listViewTeachersToGuidance.Sorting = SortOrder.Descending;
+            }
+        }
+
+        private void MenuItemGuidanceAdd_Click(object sender, EventArgs e)
+        {
+            pnlGuidanceDelete.Hide();
+            pnlGuidanceAdd.Show();           
+        }
+
+        private void MenuItemGuidanceDelete_Click(object sender, EventArgs e)
+        {
+            pnlGuidanceAdd.Hide();
+            pnlGuidanceDelete.Show();           
+        }
+
+        private void BtnGuidanceDelete_Click_1(object sender, EventArgs e)
+        {
+            int i = 0;
+            if (listViewGuidance.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete the selected guidance?", " ", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            foreach (object guidance in listViewGuidance.SelectedItems)
+            {
+                SomerenModel.Guidance g = (SomerenModel.Guidance)listViewGuidance.SelectedItems[i].Tag;
+                i++;
+                SomerenDAL.Guidance_DAO guidanceDelete = new SomerenDAL.Guidance_DAO();
+                guidanceDelete.Db_Delete_Guidance(g);
+            }
+
+            showPanel("Guidance");
+            pnlGuidanceDelete.Show();
+        }
+
+        private void PnlGuidanceDelete_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ListViewTeachersToGuidance_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
