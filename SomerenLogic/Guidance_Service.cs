@@ -25,14 +25,35 @@ namespace SomerenLogic
 
                 List<Guidance> guidance = new List<Guidance>();
                 Guidance a = new Guidance();
-                a.GuidanceId = 1;
-                a.Activity = "Dancing";
                 a.TeacherId = 3;
 
                 guidance.Add(a);
                 Guidance b = new Guidance();
-                b.GuidanceId = 2;
-                b.Activity = "Hockey";
+                b.TeacherId = 2;
+
+                //throw new Exception("Someren couldn't connect to the database");
+                System.Windows.Forms.MessageBox.Show("Someren couldn't connect to the database");
+                guidance.Add(a);
+                return guidance;
+            }
+        }
+
+        public List<Guidance> GetNotGuidance()
+        {
+            try
+            {
+                List<Guidance> teacher = guidance_db.DB_GET_ALL_NOT_Guidance();
+                return teacher;
+            }
+
+            catch (Exception)
+            {
+                List<Guidance> guidance = new List<Guidance>();
+                Guidance a = new Guidance();
+                a.TeacherId = 3;
+
+                guidance.Add(a);
+                Guidance b = new Guidance();
                 b.TeacherId = 2;
 
                 //throw new Exception("Someren couldn't connect to the database");

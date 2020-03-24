@@ -8,8 +8,8 @@ namespace SomerenModel
 {
     public class Guidance
     {
-        public int GuidanceId { get; set; } 
-        public string Activity { get; set;  } 
+        
+        public string TeacherName { get; set;  } 
         public int TeacherId { get; set; } 
 
     }
