@@ -41,6 +41,7 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -57,6 +58,7 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -109,6 +111,7 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 pnl_Lecturers.Show();
                 // pnl_Lecturers.BringToFront();
@@ -136,14 +139,26 @@ namespace SomerenUI
 
                     ListViewItem li = new ListViewItem(t.Number.ToString());
 
-                    //De naam splitsen naar voor naam en achter naam
+                    //De naam splitsen naar voornaam en achternaam
                     var names = t.Name.Split(' ');
-                    string firstName = names[0];
+                    string firstName = "";
                     string lastName = "";
-                    if (names.Count() > 0 && names[1] != null)
+
+                    for (int i = 0; i < names.Length; i++)
                     {
-                        lastName = names[1];
+                        if (i == 0)
+                        {
+                            firstName = names[i];
+                        }
+                        else 
+                        {
+                            if (names.Count() > 0 && names[i] != null)
+                            {
+                                lastName += names[i] + " ";
+                            }
+                        }
                     }
+                    
                     li.SubItems.Add(firstName);
                     li.SubItems.Add(lastName);
 
@@ -161,7 +176,6 @@ namespace SomerenUI
                     listViewTeachers.Items.Add(li);
                 }
             }
-
             else if (panelName == "Rooms")
             {
                 // hide all other panels
@@ -173,6 +187,7 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 // show rooms
                 pnl_Room.Show();
@@ -210,7 +225,6 @@ namespace SomerenUI
                 }
 
             }
-
             else if (panelName == "Beverages")
             {
                 // hide all other panels
@@ -222,6 +236,7 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 // show rooms
                 pnl_Beverage.Show();
@@ -278,6 +293,7 @@ namespace SomerenUI
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 //show Revenue
                 pnl_Revenue.Show();
@@ -321,6 +337,7 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Guidance.Hide();
+                pnl_Schedule.Hide();
 
                 // show register
                 pnl_Register.Show();
@@ -367,7 +384,6 @@ namespace SomerenUI
                 }
 
             }
-
             else if (panelName == "Guidance")
             {
                 // hide all other panels
@@ -379,14 +395,15 @@ namespace SomerenUI
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
-                
+                pnl_Schedule.Hide();
+
                 pnl_Guidance.Show();
                 pnlGuidanceAdd.Hide();
                 pnlGuidanceDelete.Show();
 
                 listViewGuidance.View = View.Details;
                 listViewGuidance.Clear();
-                
+
                 listViewGuidance.Columns.Add("Teacher ID");
                 listViewGuidance.Columns.Add("First name");
                 listViewGuidance.Columns.Add("Last name");
@@ -441,6 +458,45 @@ namespace SomerenUI
                     listViewTeachersToGuidance.Items.Add(li);
                 }
 
+            }
+            else if (panelName == "Schedule")
+            {
+                // hide all other panels
+                pnl_Dashboard.Hide();
+                img_Dashboard.Hide();
+                pnl_Lecturers.Hide();
+                pnl_Students.Hide();
+                pnl_Room.Hide();
+                pnl_Beverage.Hide();
+                pnl_Guidance.Hide();
+                pnl_Revenue.Hide();
+
+                //show Revenue
+                pnl_Schedule.Show();
+
+                listViewSchedule.View = View.Details;
+                listViewSchedule.Clear();
+
+                SomerenLogic.Schedule_Service scheService = new SomerenLogic.Schedule_Service();
+                List<Schedule> schedule = scheService.GetSchedule();
+
+                listViewSchedule.Columns.Add("Teacher");
+                listViewSchedule.Columns.Add("Activity");
+                listViewSchedule.Columns.Add("Date");
+                listViewSchedule.Columns.Add("Start time");
+                listViewSchedule.Columns.Add("End time");
+
+                foreach (SomerenModel.Schedule sItem in schedule)
+                {
+                    ListViewItem li = new ListViewItem(sItem.TeacherName);
+                    li.SubItems.Add(sItem.Activity);
+                    string[] date = sItem.Date.Split(' ');
+                    li.SubItems.Add(date[0]);
+                    li.SubItems.Add(sItem.StartTime);
+                    li.SubItems.Add(sItem.EndTime);
+
+                    listViewSchedule.Items.Add(li);
+                }
             }
 
         }
@@ -537,6 +593,11 @@ namespace SomerenUI
         private void GuidanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Guidance");
+        }
+
+        private void ScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Schedule");
         }
 
         private void BtnGuidanceAdd_Click(object sender, EventArgs e)
