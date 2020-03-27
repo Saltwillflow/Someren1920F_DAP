@@ -48,6 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddActivity.Designer.cs">
+      <DependentUpon>AddActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteActivity.Designer.cs">
+      <DependentUpon>DeleteActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="SomerenUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +74,18 @@
     <Compile Include="SomerenUpdate.Designer.cs">
       <DependentUpon>SomerenUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateActivity.Designer.cs">
+      <DependentUpon>UpdateActivity.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddActivity.resx">
+      <DependentUpon>AddActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteActivity.resx">
+      <DependentUpon>DeleteActivity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SomerenUI.resx">
       <DependentUpon>SomerenUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -77,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="SomerenUpdate.resx">
       <DependentUpon>SomerenUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateActivity.resx">
+      <DependentUpon>UpdateActivity.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
