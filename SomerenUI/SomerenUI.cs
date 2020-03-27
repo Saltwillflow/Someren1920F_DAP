@@ -41,7 +41,6 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 // show dashboard
                 pnl_Dashboard.Show();
@@ -58,7 +57,6 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 // show students
                 pnl_Students.Show();
@@ -111,7 +109,6 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 pnl_Lecturers.Show();
                 // pnl_Lecturers.BringToFront();
@@ -176,7 +173,6 @@ namespace SomerenUI
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 // show rooms
                 pnl_Room.Show();
@@ -222,11 +218,10 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
-                lbl_Rooms.Hide();
+                pnl_Rooms.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 // show rooms
                 pnl_Beverage.Show();
@@ -283,7 +278,6 @@ namespace SomerenUI
                 pnl_Room.Hide();
                 pnl_Beverage.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 //show Revenue
                 pnl_Revenue.Show();
@@ -323,11 +317,10 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
-                lbl_Rooms.Hide();
+                pnl_Rooms.Hide();
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Guidance.Hide();
-                pnl_Activities.Hide();
 
                 // show register
                 pnl_Register.Show();
@@ -382,11 +375,10 @@ namespace SomerenUI
                 img_Dashboard.Hide();
                 pnl_Lecturers.Hide();
                 pnl_Students.Hide();
-                lbl_Rooms.Hide();
+                pnl_Rooms.Hide();
                 pnl_Beverage.Hide();
                 pnl_Revenue.Hide();
                 pnl_Register.Hide();
-                pnl_Activities.Hide();
                 
                 pnl_Guidance.Show();
                 pnlGuidanceAdd.Hide();
@@ -451,50 +443,6 @@ namespace SomerenUI
 
             }
 
-            else if (panelName == "Activities")
-            {
-                // hide all other panels
-                pnl_Dashboard.Hide();
-                img_Dashboard.Hide();
-                pnl_Lecturers.Hide();
-                pnl_Students.Hide();
-                pnl_Beverage.Hide();
-                pnl_Revenue.Hide();
-                pnl_Register.Hide();
-                pnl_Guidance.Hide();
-                pnl_Room.Hide();
-                
-
-                // show Activities
-                pnl_Activities.Show();
-
-
-
-                // fill the activities listview within the rooms panel with a list of activities
-                SomerenLogic.Activity_Service actService = new SomerenLogic.Activity_Service();
-                List<Activity> actList = actService.GetActivities();
-                listViewActivities.View = View.Details;
-
-                // clear the listview before filling it again
-                listViewActivities.Clear();
-
-                listViewActivities.Columns.Add("Activity Id");
-                listViewActivities.Columns.Add("Decription");
-                listViewActivities.Columns.Add("Amount of Students");
-                listViewActivities.Columns.Add("Amount of Guidance"); 
-
-                foreach (SomerenModel.Activity s in actList)
-                {
-
-                    ListViewItem li = new ListViewItem(s.Id.ToString());
-                    li.SubItems.Add(s.Description);
-                    li.SubItems.Add(s.Students_Ammount.ToString());
-                    li.SubItems.Add(s.Guidance_Ammount.ToString());
-                    listViewActivities.Items.Add(li);
-                }
-
-            }
-            
         }
 
         
@@ -682,53 +630,6 @@ namespace SomerenUI
         }
 
         private void ListViewTeachersToGuidance_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Activities");
-        }
-
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Add Activities");
-        }
-
-        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Update Activities");
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Delete Activities");
-
-        }
-
-        private void btn_AddAct_Click(object sender, EventArgs e)
-        {
-            AddActivity f4 = new AddActivity();
-            f4.ShowDialog();
-            showPanel("Activities");
-        }
-
-        private void btn_UpdateAct_Click(object sender, EventArgs e)
-        {
-            UpdateActivity f3 = new UpdateActivity();
-            f3.ShowDialog();
-            showPanel("Activities");
-        }
-
-        private void btn_DeleteAct_Click(object sender, EventArgs e)
-        {
-            DeleteActivity f4 = new DeleteActivity();
-            f4.ShowDialog();
-            showPanel("Activities");
-        }
-
-        private void lbl_Activities_Click(object sender, EventArgs e)
         {
 
         }

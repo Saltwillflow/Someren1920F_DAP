@@ -20,15 +20,15 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-
-        //public int DB_Get_Total_Sold(int Id)
-        //{
-        //    string query = "SELECT COUNT(*) FROM BeverageOrders AS BO WHERE BO.beverage_id = " + Id;
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    int order = ExecuteSelectQuery(query, sqlParameters);
-        //    return order;
-        //}
-
+        /*
+        public int DB_Get_Total_Sold(int Id)
+        {
+            string query = "SELECT COUNT(*) FROM BeverageOrders AS BO WHERE BO.beverage_id = " + Id;
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            int order = ExecuteSelectQuery(query, sqlParameters);
+            return order;
+        }
+        */
 
         private List<Beverage> ReadTables(DataTable dataTable)
         {
