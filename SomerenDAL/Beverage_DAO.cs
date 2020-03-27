@@ -15,7 +15,7 @@ namespace SomerenDAL
     {
         public List<Beverage> Db_Get_All_Beverages()
         {
-            string query = "SELECT beverage_id, beverage_name, price, alcoholic, stock, total_sold FROM [Beverages]";
+            string query = "SELECT beverage_id, beverage_name, price, alcoholic, total_sold FROM [Beverages]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -43,7 +43,7 @@ namespace SomerenDAL
                 }
 
                 int stockNullCheck = 0;
-                if (!dr.IsNull("stock"))
+                if (!dr.IsNull("total_sold"))
                 {
                     stockNullCheck = (int)(dr["stock"]);
                 }
