@@ -86,11 +86,22 @@ namespace SomerenUI
                 {
                     ListViewItem li = new ListViewItem(s.Number.ToString());
                     var names = s.Name.Split(' ');
-                    string firstName = names[0];
+                    string firstName = "";
                     string lastName = "";
-                    if (names.Count() > 0 && names[1] != null)
+
+                    for (int i = 0; i < names.Length; i++)
                     {
-                        lastName = names[1];
+                        if (i == 0)
+                        {
+                            firstName = names[i];
+                        }
+                        else
+                        {
+                            if (names.Count() > 0 && names[i] != null)
+                            {
+                                lastName += names[i] + " ";
+                            }
+                        }
                     }
                     li.SubItems.Add(firstName);
                     li.SubItems.Add(lastName);
