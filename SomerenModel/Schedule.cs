@@ -8,8 +8,10 @@ namespace SomerenModel
 {
     public class Schedule
     {
-        DateTime Date { get; set; }
-        DateTime StartTime { get; set; }
-        DateTime EndTime { get; set; }
+        public string TeacherName { get; set; }
+        public string Activity { get; set; }
+        public string Date { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
     }
 }
